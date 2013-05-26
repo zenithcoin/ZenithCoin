@@ -1,5 +1,5 @@
 
-Freicoin integration/staging tree
+ZenithCoin  integration/staging tree
 
 Development process
 ===================
