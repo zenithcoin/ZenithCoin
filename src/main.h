@@ -32,14 +32,15 @@ static const unsigned int MAX_ORPHAN_TRANSACTIONS = MAX_BLOCK_SIZE/100;
 static const unsigned int MAX_INV_SZ = 50000;
 static const mpq MIN_TX_FEE = mpq("50000/1");
 static const mpq MIN_RELAY_TX_FEE = mpq("10000/1");
-static const int64 I64_MAX_MONEY = 9999999999999999LL;
-static const mpz MPZ_MAX_MONEY = mpz("9999999999999999");
-static const mpq MPQ_MAX_MONEY = mpq("9999999999999999/1");
-static const int EQ_HEIGHT = 161280; // block subsidy will end here
+static const int64 I64_MAX_MONEY = 4200000000000000LL;
+static const mpz MPZ_MAX_MONEY = mpz("4200000000000000");
+static const mpq MPQ_MAX_MONEY = mpq("4200000000000000/1");
+static const int EQ_HEIGHT = 1261440000; // block subsidy will end here... in 100 years
 static const mpq TITHE_RATIO = mpq("1/2");
-static const mpq TITHE_AMOUNT = MPQ_MAX_MONEY * TITHE_RATIO / EQ_HEIGHT;
-static const mpq INITIAL_SUBSIDY = mpq("15916928404");
-static const int DEMURRAGE_RATE = 1048576; //
+static const mpq INITIAL_SUBSIDY = mpq("1200000000/1");
+static const mpq MINER_SUBSIDY =   mpq("1200000000/1");
+static const mpq TITHE_AMOUNT = INITIAL_SUBSIDY;
+static const int DEMURRAGE_RATE = 1000000; // 1048576 2 ^ 20 5%
 inline bool MoneyRange(int64 nValue) { return (nValue >= 0 && nValue <= I64_MAX_MONEY); }
 inline bool MoneyRange(mpz zValue) { return (zValue >= 0 && zValue <= MPZ_MAX_MONEY); }
 inline bool MoneyRange(mpq qValue) { return (qValue >= 0 && qValue <= MPQ_MAX_MONEY); }
