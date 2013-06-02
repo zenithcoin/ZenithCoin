@@ -36,6 +36,8 @@
 
 #define COIN_DNS_SEED {"node.zenitcoin.com", "seed.zenithcoin.com"},
 
+#define COIN_IRC_CHANNELS 1
+
 #define COIN_SEED  
 
 // 0x529a1347, 0x2d3de442,

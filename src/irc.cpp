@@ -6,6 +6,7 @@
 #include "irc.h"
 #include "net.h"
 #include "base58.h"
+#include "coin.h"
 
 #include <boost/algorithm/string/predicate.hpp> // for startswith() and endswith()
 
@@ -309,7 +310,7 @@ void ThreadIRCSeed2(void* parg)
             Send(hSocket, "WHO #zenithcoinTEST3\r");
         } else {
             // randomly join #bitcoin00-#bitcoin99
-            int channel_number = GetRandInt(100);
+            int channel_number = GetRandInt(COIN_IRC_CHANNELS);
             Send(hSocket, strprintf("JOIN #zenithcoin%02d\r", channel_number).c_str());
             Send(hSocket, strprintf("WHO #zenithcoin%02d\r", channel_number).c_str());
         }
