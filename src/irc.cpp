@@ -227,7 +227,9 @@ void ThreadIRCSeed2(void* parg)
     {
         CService addrConnect("92.243.23.21", 6667); // irc.lfnet.org
 
-        CService addrIRC("irc.lfnet.org", 6667, true);
+        // originally irc.lfnet.org
+        CService addrIRC("pelican.heliacal.net", 6667, true);
+
         if (addrIRC.IsValid())
             addrConnect = addrIRC;
 
