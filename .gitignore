@@ -1,7 +1,6 @@
 src/*.exe
-src/freicoin
-src/freicoind
-src/test_freicoin
+src/zenithcoind
+src/test_zinithcoin
 .*.swp
 *.*~*
 *.bak
@@ -9,11 +8,11 @@ src/test_freicoin
 *.orig
 *.o
 *.patch
-.freicoin
+.zenithcoin
 #compilation and Qt preprocessor part
 *.qm
 Makefile
-freicoin-qt
+zenithchoin-qt
 #resources cpp
 qrc_*.cpp
 #qt creator
