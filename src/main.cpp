@@ -2959,9 +2959,16 @@ for himself AND the group.\" ― John Nash";
             }
             printf("block.nTime = %u \n", block.nTime);
             printf("block.nNonce = %u \n", block.nNonce);
+
+            printf("Block hashed using the non-existent Merkel, based on the pzTimestamp from main.cpp");
             printf("block.GetHash = %s\n", block.GetHash().ToString().c_str());
+            printf("Genesis block, no good because all the nNonces are set to 0 in main.cpp");
             printf("hashGenesisBlock = %s\n", hashGenesisBlock.ToString().c_str());
+            printf("Valid Merkel Hash, generated using the epoch time in main.cpp");
             printf("block.hashMerkleRoot = %s\n", block.hashMerkleRoot.ToString().c_str());
+
+            //need to print out hex for entire block for use in multibit
+
 
         }
 
@@ -3217,7 +3224,7 @@ bool static AlreadyHave(CTxDB& txdb, const CInv& inv)
 // The message start string is designed to be unlikely to occur in normal data.
 // The characters are rarely used upper ASCII, not valid as UTF-8, and produce
 // a large 4-byte int at any alignment.
-unsigned char pchMessageStart[4] = { 0xca, 0xfe, 0xba, 0xbe };
+unsigned char pchMessageStart[4] = COIN_MESSAGE_START;
 
 
 

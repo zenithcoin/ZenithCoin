@@ -9,6 +9,7 @@
 
 #include "main.h"
 #include "uint256.h"
+#include "coin.h"
 
 namespace Checkpoints
 {
@@ -23,12 +24,12 @@ namespace Checkpoints
     //
     static MapCheckpoints mapCheckpoints =
         boost::assign::map_list_of
-        (0, uint256("0x000000005d7230f40e4d683770d0e962ecbf90275468b6e9533fb5be06a66c75"))
+        (0, uint256(COIN_HASH_GEN_BLOCK))
        ;
 
     static MapCheckpoints mapCheckpointsTestnet =
         boost::assign::map_list_of
-        (0, uint256("0x000000005d7230f40e4d683770d0e962ecbf90275468b6e9533fb5be06a66c75"))
+        (0, uint256(COIN_HASH_GEN_BLOCK))
         ;
 
     bool CheckBlock(int nHeight, const uint256& hash)

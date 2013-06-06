@@ -44,7 +44,7 @@ static const int DEMURRAGE_RATE = 1000000; // 1048576 2 ^ 20 5%
 inline bool MoneyRange(int64 nValue) { return (nValue >= 0 && nValue <= I64_MAX_MONEY); }
 inline bool MoneyRange(mpz zValue) { return (zValue >= 0 && zValue <= MPZ_MAX_MONEY); }
 inline bool MoneyRange(mpq qValue) { return (qValue >= 0 && qValue <= MPQ_MAX_MONEY); }
-static const int COINBASE_MATURITY = 100;
+static const int COINBASE_MATURITY = 100; // number of blocks till a geneis coin is ready
 // Threshold for nLockTime: below this value it is interpreted as block number, otherwise as UNIX timestamp.
 static const unsigned int LOCKTIME_THRESHOLD = 500000000; // Tue Nov  5 00:53:20 1985 UTC
 static const int DIFF_FILTER_THRESHOLD_TESTNET =  2016;
@@ -578,7 +578,7 @@ public:
     {
         // Large (in bytes) low-priority (new, small-coin) transactions
         // need a fee.
-        return dPriority > COIN * 144 / 250;
+        return dPriority > COIN * 576 / 250; // blocks per day
     }
 
     mpq GetMinFee(unsigned int nBlockSize=1, bool fAllowFree=true, enum GetMinFee_mode mode=GMF_BLOCK) const;

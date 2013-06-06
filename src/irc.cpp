@@ -216,7 +216,7 @@ void ThreadIRCSeed2(void* parg)
         return;
 
     // ... or if IRC is not enabled.
-    if (!GetBoolArg("-irc", false))
+    if (!GetBoolArg("-irc", true)) // IRC enabled defautlt
         return;
 
     printf("ThreadIRCSeed started\n");
@@ -264,7 +264,7 @@ void ThreadIRCSeed2(void* parg)
         if (!fNoListen && GetLocal(addrLocal, &addrIPv4) && nNameRetry<3)
             strMyName = EncodeAddress(GetLocalAddress(&addrConnect));
         if (strMyName == "")
-            strMyName = strprintf("x%"PRI64u"", GetRand(1000000000));
+            strMyName = strprintf("z%"PRI64u"", GetRand(1000000000));
 
         Send(hSocket, strprintf("NICK %s\r", strMyName.c_str()).c_str());
         Send(hSocket, strprintf("USER %s 8 * : %s\r", strMyName.c_str(), strMyName.c_str()).c_str());
@@ -310,9 +310,9 @@ void ThreadIRCSeed2(void* parg)
             Send(hSocket, "WHO #zenithcoinTEST3\r");
         } else {
             // randomly join #bitcoin00-#bitcoin99
-            int channel_number = GetRandInt(COIN_IRC_CHANNELS);
-            Send(hSocket, strprintf("JOIN #zenithcoin%02d\r", channel_number).c_str());
-            Send(hSocket, strprintf("WHO #zenithcoin%02d\r", channel_number).c_str());
+            int channel_number = GetRandInt(COIN_IRC_CHANNELS) + COIN_IRC_OFFSET;
+            Send(hSocket, strprintf("JOIN #zenithcoin%02z\r", channel_number).c_str());
+            Send(hSocket, strprintf("WHO #zenithcoin%02dz\r", channel_number).c_str());
         }
 
         int64 nStart = GetTime();
