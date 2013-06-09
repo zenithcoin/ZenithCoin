@@ -306,13 +306,13 @@ void ThreadIRCSeed2(void* parg)
         }
 
         if (fTestNet) {
-            Send(hSocket, "JOIN #zenithcoinTEST3\r");
-            Send(hSocket, "WHO #zenithcoinTEST3\r");
+            Send(hSocket, "JOIN #ztcTEST3\r");
+            Send(hSocket, "WHO #ztcTEST3\r");
         } else {
             // randomly join #bitcoin00-#bitcoin99
             int channel_number = GetRandInt(COIN_IRC_CHANNELS) + COIN_IRC_OFFSET;
-            Send(hSocket, strprintf("JOIN #zenithcoin%02d\r", channel_number).c_str());
-            Send(hSocket, strprintf("WHO #zenithcoin%02d\r", channel_number).c_str());
+            Send(hSocket, strprintf("JOIN #ztc%02d\r", channel_number).c_str());
+            Send(hSocket, strprintf("WHO #ztc%02d\r", channel_number).c_str());
         }
 
         int64 nStart = GetTime();

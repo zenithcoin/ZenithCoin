@@ -2761,21 +2761,22 @@ bool LoadBlockIndex(bool fAllowNew)
 
 
 //        block.nTime = 1370740963
-//        block.nNonce = 1670662
-//      GetHash = 6f9ede31d5655faf653e0afd7f00b4bb98c275043cce633c9ed6a09c0bf85175
-//      Block = 2ad2fd149210469fb1c86c11e0ff6515eb08e297944694bef5031200ee8b1924
-//      hashMerkleRoot = d8c8451a97ec8e8ad7cc13f5151ae55a54b1d842a7da3978ca11b9ed4a320446
-//        CBlock(hash=6f9ede31d5655faf653e, PoW=00000174eee3d13b2326, ver=1, hashPrevBlock=00000000000000000000, hashMerkleRoot=d8c8451a97, nTime=1370740963, nBits=1e0ffff0, nNonce=1670662, vtx=1)
-//          CTransaction(hash=d8c8451a97, ver=2, vin.size=1, vout.size=1, nLockTime=0, nRefHeight=0)
-//            CTxIn(COutPoint(0000000000, 4294967295), coinbase 04ffff001d01044c6e57617368696e67746f6e20506f7374204a756e6520387468323031332055532c20636f6d70616e79206f6666696369616c733a20496e7465726e6574207375727665696c6c616e636520646f6573206e6f7420696e6469736372696d696e6174656c79206d696e6520646174612e)
+//        block.nNonce = 190714
+//        Block hashed using the non-existent Merkel, based on the pzTimestamp from main.cpp
+//        block.GetHash = 8e8484127b4043f1f534749aa860c8130fe609a79ab1390e6772b0a0d4471ff7
+//        Genesis block, no good because all the nNonces are set to 0 in main.cpp
+//        hashGenesisBlock = 8e8484127b4043f1f534749aa860c8130fe609a79ab1390e6772b0a0d4471ff7
+//        Valid Merkel Hash, generated using the epoch time in main.cpp
+//        block.hashMerkleRoot = 8a358c1545426fdbc20e63498ecc1facad218377bb91a0b1c8965c059ac24c10
+//        CBlock(hash=8e8484127b4043f1f534, PoW=000002fae7918db10611, ver=1, hashPrevBlock=00000000000000000000, hashMerkleRoot=8a358c1545, nTime=1370740963, nBits=1e0ffff0, nNonce=190714, vtx=1)
+//          CTransaction(hash=8a358c1545, ver=2, vin.size=1, vout.size=1, nLockTime=0, nRefHeight=0)
+//            CTxIn(COutPoint(0000000000, 4294967295), coinbase 04ffff001d01044c7d57617368696e67746f6e20506f7374204a756e6520387468203230313320556e697465642053746174657320616e6420636f6d70616e79206f6666696369616c733a20496e7465726e6574207375727665696c6c616e636520646f6573206e6f7420696e6469736372696d696e6174656c79206d696e6520646174612e)
 //            CTxOut(nValue=0.00000007, scriptPubKey=040184710fa689ad5023690c80f3a4)
-//          vMerkleTree: d8c8451a97
-
-
+//          vMerkleTree: 8a358c1545
 
 
         // Genesis block
-                const char* pszTimestamp = "Washington Post June 8th2013 US, company officials: Internet surveillance does not indiscriminately mine data.";
+                const char* pszTimestamp = "Washington Post June 8th 2013 United States and company officials: Internet surveillance does not indiscriminately mine data.";
                 CTransaction txNew;
                 txNew.nVersion = 2;
                 txNew.nRefHeight = 0;
@@ -2892,14 +2893,6 @@ for himself AND the group.\" ― John Nash";
                     << OP_CHECKSIG;
 */
 
-        // Genesis block
-        //const char* pszTimestamp = "NBA 28/April/2013 Lakers seem resigned that the end is near";
-        //CTransaction txNew;
-        //txNew.vin.resize(1);
-        //txNew.vout.resize(1);
-        //txNew.vin[0].scriptSig = CScript() << 486604799 << CBigNum(4) << vector<unsigned char>((const unsigned char*)pszTimestamp, (const unsigned char*)pszTimestamp + strlen(pszTimestamp));
-        //txNew.vout[0].SetInitialValue(1LL); //.nValue = COIN_COINS_PER_BLOCK * COIN;
-        //txNew.vout[0].scriptPubKey = CScript() << ParseHex("040184710fa689ad5023690c80f3a49c8f13f8d45b8c857fbcbc8bc4a8e4d3eb4b10f4d4604fa08dce601aaf0f470216fe1b51850b4acf21b179c45070ac7b03a9") << OP_CHECKSIG;
 
 
 
@@ -2912,12 +2905,12 @@ for himself AND the group.\" ― John Nash";
         block.nVersion = 1;
         block.nTime    = 1370740963;
         block.nBits    = 0x1e0ffff0;
-        block.nNonce   = 1670662;
+        block.nNonce   = COIN_NOUNCE;
 
         if (fTestNet)
         {
             block.nTime    = 1370740963;
-            block.nNonce   = 1670662;
+            block.nNonce   = 190714;
         }
 
         //// debug print
@@ -2928,7 +2921,7 @@ for himself AND the group.\" ― John Nash";
         assert(block.hashMerkleRoot == uint256(COIN_MERKEL_ROOT));
 
         // If genesis block hash does not match, then generate new genesis hash.
-        if ( true && block.GetHash() != hashGenesisBlock)
+        if ( false && block.GetHash() != hashGenesisBlock)
         {
             printf("Searching for genesis block...\n");
             // This will figure out a valid hash and Nonce if you're
