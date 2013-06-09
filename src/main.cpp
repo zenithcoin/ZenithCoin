@@ -977,7 +977,7 @@ mpq static GetInitialDistributionAmount(int nHeight)
         mpz zInitialSubsidy = INITIAL_SUBSIDY.get_num();
         if ( nHeight < EQ_HEIGHT )
         	{
-            nSubsidy = TITHE_AMOUNT; // + (EQ_HEIGHT-nHeight) * zInitialSubsidy / EQ_HEIGHT;
+        		nSubsidy = TITHE_AMOUNT; // + (EQ_HEIGHT-nHeight) * zInitialSubsidy / EQ_HEIGHT;
         	}
     }
     else {
@@ -985,7 +985,7 @@ mpq static GetInitialDistributionAmount(int nHeight)
         	{
         	// Subsidy is cut in half every 840000 blocks, which will occur approximately every 4 years
         	//nSubsidy >>= (nHeight / COIN_SUBSIDY_HALFLIFE);
-        	nSubsidy = TITHE_AMOUNT; //+ (EQ_HEIGHT-nHeight) * INITIAL_SUBSIDY / EQ_HEIGHT;
+        	     nSubsidy = TITHE_AMOUNT;  //+ (EQ_HEIGHT-nHeight) * INITIAL_SUBSIDY / EQ_HEIGHT;
         	}
 
     }
@@ -1346,6 +1346,8 @@ mpq static GetPerpetualSubsidyAmount(int nHeight)
 	// Subsidy is cut in half every 840000 blocks, which will occur approximately every 4 years
 	nSubsidy >>= (nHeight / COIN_SUBSIDY_HALFLIFE);
 
+	if( nHeight < 1728 )
+		return MINER_SUBSIDY * 7;
     return MINER_SUBSIDY;
 	//return i64_to_mpq(nSubsidy);
 }
@@ -2758,35 +2760,27 @@ bool LoadBlockIndex(bool fAllowNew)
 
 
 
-// Genesis Block:
-//        block.nTime = 1370088535
-//        block.nNonce = 168460
-//        block.GetHash = 2ad2fd149210469fb1c86c11e0ff6515eb08e297944694bef5031200ee8b1924
-//        hashGenesisBlock = f0871eccf462f04457d127c5244350042782938fa036c66f658d67d5907572bc
-//        block.hashMerkleRoot = 34b8917e97f6fa3e1981e74dc2d9c646548925f32c32fc1346a91d82ca7b8cdd
-//        CBlock(hash=2ad2fd149210469fb1c8, PoW=00000a0bb29e764dbd63, ver=1, hashPrevBlock=00000000000000000000, hashMerkleRoot=34b8917e97, nTime=1370088535, nBits=1e0ffff0, nNonce=168460, vtx=1)
-//          CTransaction(hash=34b8917e97, ver=2, vin.size=1, vout.size=8, nLockTime=0, nRefHeight=0)
-//            CTxIn(COutPoint(0000000000, 4294967295), coinbase 04ffff001d01044857617368696e67746f6e20506f73742033312f4d61792f3230313320576879206469646ee280997420426974636f696e20757365727320667265616b206f757420696e204d61793f)
+//        block.nTime = 1370740963
+//        block.nNonce = 1670662
+//      GetHash = 6f9ede31d5655faf653e0afd7f00b4bb98c275043cce633c9ed6a09c0bf85175
+//      Block = 2ad2fd149210469fb1c86c11e0ff6515eb08e297944694bef5031200ee8b1924
+//      hashMerkleRoot = d8c8451a97ec8e8ad7cc13f5151ae55a54b1d842a7da3978ca11b9ed4a320446
+//        CBlock(hash=6f9ede31d5655faf653e, PoW=00000174eee3d13b2326, ver=1, hashPrevBlock=00000000000000000000, hashMerkleRoot=d8c8451a97, nTime=1370740963, nBits=1e0ffff0, nNonce=1670662, vtx=1)
+//          CTransaction(hash=d8c8451a97, ver=2, vin.size=1, vout.size=1, nLockTime=0, nRefHeight=0)
+//            CTxIn(COutPoint(0000000000, 4294967295), coinbase 04ffff001d01044c6e57617368696e67746f6e20506f7374204a756e6520387468323031332055532c20636f6d70616e79206f6666696369616c733a20496e7465726e6574207375727665696c6c616e636520646f6573206e6f7420696e6469736372696d696e6174656c79206d696e6520646174612e)
 //            CTxOut(nValue=0.00000007, scriptPubKey=040184710fa689ad5023690c80f3a4)
-//            CTxOut(nValue=0.00000007, scriptPubKey=5029d180e0c5ed798d877b1ada9977)
-//            CTxOut(nValue=0.00000007, scriptPubKey=119 OP_DROP 416e64207065726861)
-//            CTxOut(nValue=0.00000007, scriptPubKey=7829299 OP_DROP 49206c6561726e)
-//            CTxOut(nValue=0.00000007, scriptPubKey=7777773377 OP_DROP 22496e20746)
-//            CTxOut(nValue=0.00000007, scriptPubKey=13175 OP_DROP 2254686520426573)
-//            CTxOut(nValue=0.00000007, scriptPubKey=7733337777 OP_DROP 222022496e6)
-//            CTxOut(nValue=21.00000000, scriptPubKey=OP_DUP OP_HASH160 85e54144c402)
-//          vMerkleTree: 34b8917e97
+//          vMerkleTree: d8c8451a97
 
 
 
 
         // Genesis block
-                const char* pszTimestamp = "Washington Post 31/May/2013 Why didn’t Bitcoin users freak out in May?";
+                const char* pszTimestamp = "Washington Post June 8th2013 US, company officials: Internet surveillance does not indiscriminately mine data.";
                 CTransaction txNew;
                 txNew.nVersion = 2;
                 txNew.nRefHeight = 0;
                 txNew.vin .resize(1);
-                txNew.vout.resize(8);
+                txNew.vout.resize(1);
                 txNew.vin[0].scriptSig = CScript()
                     << 486604799
                     << CBigNum(4)
@@ -2797,6 +2791,8 @@ bool LoadBlockIndex(bool fAllowNew)
                 txNew.vout[0].scriptPubKey = CScript()
 				<< ParseHex("040184710fa689ad5023690c80f3a49c8f13f8d45b8c857fbcbc8bc4a8e4d3eb4b10f4d4604fa08dce601aaf0f470216fe1b51850b4acf21b179c45070ac7b03a9")
                  << OP_CHECKSIG;
+
+                /*
                 txNew.vout[1].SetInitialValue(7LL);
                 txNew.vout[1].scriptPubKey = CScript()
                     << uint256("0x000000000000042d1bc432a92c42c186297799da1a7b878d79edc5e080d12950")
@@ -2894,7 +2890,7 @@ for himself AND the group.\" ― John Nash";
                     << ParseHex("85e54144c4020a65fa0a8fdbac8bba75dbc2fd00")
                     << OP_EQUALVERIFY
                     << OP_CHECKSIG;
-
+*/
 
         // Genesis block
         //const char* pszTimestamp = "NBA 28/April/2013 Lakers seem resigned that the end is near";
@@ -2914,14 +2910,14 @@ for himself AND the group.\" ― John Nash";
         block.hashPrevBlock = 0;
         block.hashMerkleRoot = block.BuildMerkleTree();
         block.nVersion = 1;
-        block.nTime    = 1370088535;
+        block.nTime    = 1370740963;
         block.nBits    = 0x1e0ffff0;
-        block.nNonce   = 168460;
+        block.nNonce   = 1670662;
 
         if (fTestNet)
         {
-            block.nTime    = 1370088535;
-            block.nNonce   = 168460;
+            block.nTime    = 1370740963;
+            block.nNonce   = 1670662;
         }
 
         //// debug print
@@ -2932,7 +2928,7 @@ for himself AND the group.\" ― John Nash";
         assert(block.hashMerkleRoot == uint256(COIN_MERKEL_ROOT));
 
         // If genesis block hash does not match, then generate new genesis hash.
-        if ( false && block.GetHash() != hashGenesisBlock)
+        if ( true && block.GetHash() != hashGenesisBlock)
         {
             printf("Searching for genesis block...\n");
             // This will figure out a valid hash and Nonce if you're

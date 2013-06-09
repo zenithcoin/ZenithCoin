@@ -13,7 +13,7 @@
 // https://en.bitcoin.it/wiki/Base58Check_encoding
 #define COIN_ADDRESS_START  0
 
-#define COIN_HASH_GEN_BLOCK "0x2ad2fd149210469fb1c86c11e0ff6515eb08e297944694bef5031200ee8b1924"
+#define COIN_HASH_GEN_BLOCK "0x6f9ede31d5655faf653e0afd7f00b4bb98c275043cce633c9ed6a09c0bf85175"
 
 
 #define COIN_SUBSIDY_HALFLIFE 840000
@@ -33,14 +33,14 @@
 
 #define COIN_SCRYPT_SCRATCHPAD_SIZE 256
 
-#define COIN_MERKEL_ROOT  "0x34b8917e97f6fa3e1981e74dc2d9c646548925f32c32fc1346a91d82ca7b8cdd"
+#define COIN_MERKEL_ROOT  "0xd8c8451a97ec8e8ad7cc13f5151ae55a54b1d842a7da3978ca11b9ed4a320446"
 
 #define COIN_DNS_SEED {"east.zenithcoin.com", "west.zenithcoin.com"},
 
 #define COIN_IRC_CHANNELS 1
-#define COIN_IRC_OFFSET 103
+#define COIN_IRC_OFFSET 113
 
-#define COIN_MESSAGE_START { 0xde, 0xfe, 0xc8, 0x00 }
+#define COIN_MESSAGE_START { 0xde, 0xfe, 0xc8, 0x13 }
 
 #define COIN_SEED  
 
