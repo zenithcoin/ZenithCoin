@@ -311,8 +311,8 @@ void ThreadIRCSeed2(void* parg)
         } else {
             // randomly join #bitcoin00-#bitcoin99
             int channel_number = GetRandInt(COIN_IRC_CHANNELS) + COIN_IRC_OFFSET;
-            Send(hSocket, strprintf("JOIN #zenithcoin%02z\r", channel_number).c_str());
-            Send(hSocket, strprintf("WHO #zenithcoin%02dz\r", channel_number).c_str());
+            Send(hSocket, strprintf("JOIN #zenithcoin%02d\r", channel_number).c_str());
+            Send(hSocket, strprintf("WHO #zenithcoin%02d\r", channel_number).c_str());
         }
 
         int64 nStart = GetTime();
@@ -345,7 +345,7 @@ void ThreadIRCSeed2(void* parg)
                 printf("IRC got join\n");
             }
 
-            if (boost::algorithm::starts_with(strName, "u"))
+            if (boost::algorithm::starts_with(strName, "z"))
             {
                 CAddress addr;
                 if (DecodeAddress(strName, addr))
