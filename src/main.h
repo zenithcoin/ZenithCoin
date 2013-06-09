@@ -48,7 +48,7 @@ static const int COINBASE_MATURITY = 100; // number of blocks till a geneis coin
 // Threshold for nLockTime: below this value it is interpreted as block number, otherwise as UNIX timestamp.
 static const unsigned int LOCKTIME_THRESHOLD = 500000000; // Tue Nov  5 00:53:20 1985 UTC
 static const int DIFF_FILTER_THRESHOLD_TESTNET =  2016;
-static const int DIFF_FILTER_THRESHOLD         = 28476;
+static const int DIFF_FILTER_THRESHOLD         = 100; // difficulty re-adjustment using filter
 #ifdef USE_UPNP
 static const int fHaveUPnP = true;
 #else
