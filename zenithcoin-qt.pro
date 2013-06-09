@@ -64,6 +64,16 @@ EXTRA_LIB_PATH=c:/MinGW/msys/1.0/local/lib
 EXTRA_INCLUDE_PATH=c:/MinGW/msys/1.0/local/include
 }
 
+macx {
+LIBS += -lboost_system -lboost_filesystem -lboost_program_options -lboost_thread
+BOOST_LIB_SUFFIX=
+BOOST_INCLUDE_PATH=/Users/albertus/tmp/boost_1_53_0
+BOOST_LIB_PATH=/Users/albertus/tmp/boost_1_53_0/stage/lib
+BDB_INCLUDE_PATH=/usr/local/BerkeleyDB.4.8/include
+BDB_LIB_PATH=/usr/local/BerkeleyDB.4.8/lib
+USE_UPNP=-
+}
+
 # use: qmake "USE_QRCODE=1"
 # libqrencode (http://fukuchi.org/works/qrencode/index.en.html) must be installed for support
 contains(USE_QRCODE, 1) {
@@ -318,7 +328,7 @@ OTHER_FILES += \
 
 # platform specific defaults, if not overridden on command line
 isEmpty(BOOST_LIB_SUFFIX) {
-    macx:BOOST_LIB_SUFFIX = -mt
+    macx:BOOST_LIB_SUFFIX = 
     #windows:BOOST_LIB_SUFFIX = -mgw44-mt-s-1_50
 }
 
@@ -368,8 +378,8 @@ macx:HEADERS += src/qt/macdockiconhandler.h
 macx:OBJECTIVE_SOURCES += src/qt/macdockiconhandler.mm
 macx:LIBS += -framework Foundation -framework ApplicationServices -framework AppKit
 macx:DEFINES += MAC_OSX MSG_NOSIGNAL=0
-macx:ICON = src/qt/res/icons/freicoin.icns
-macx:TARGET = "Freicoin-Qt"
+macx:#ICON = src/qt/res/icons/freicoin.icns
+macx:TARGET = "ZenithCoin-Qt"
 macx:QMAKE_CFLAGS_THREAD += -pthread
 macx:QMAKE_LFLAGS_THREAD += -pthread
 macx:QMAKE_CXXFLAGS_THREAD += -pthread
