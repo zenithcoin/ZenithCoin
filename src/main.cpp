@@ -2921,7 +2921,7 @@ for himself AND the group.\" ― John Nash";
         assert(block.hashMerkleRoot == uint256(COIN_MERKEL_ROOT));
 
         // If genesis block hash does not match, then generate new genesis hash.
-        if ( false && block.GetHash() != hashGenesisBlock)
+        if ( true && block.GetHash() != hashGenesisBlock)
         {
             printf("Searching for genesis block...\n");
             // This will figure out a valid hash and Nonce if you're
