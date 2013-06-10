@@ -74,6 +74,10 @@ BDB_LIB_PATH=/usr/local/BerkeleyDB.4.8/lib
 USE_UPNP=-
 }
 
+!macx:!windows {
+    USE_UPNP=1
+}
+
 # use: qmake "USE_QRCODE=1"
 # libqrencode (http://fukuchi.org/works/qrencode/index.en.html) must be installed for support
 contains(USE_QRCODE, 1) {
@@ -397,6 +401,7 @@ contains(RELEASE, 1) {
     !windows:!macx {
         # Linux: turn dynamic linking back on for c/c++ runtime libraries
         LIBS += -Wl,-Bdynamic
+        USE_UPNP=1
     }
 }
 
