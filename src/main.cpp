@@ -2905,7 +2905,7 @@ for himself AND the group.\" ― John Nash";
         block.nVersion = 1;
         block.nTime    = 1370740963;
         block.nBits    = 0x1e0ffff0;
-        block.nNonce   = COIN_NOUNCE;
+        block.nNonce   =  90714;
 
         if (fTestNet)
         {

@@ -26,8 +26,10 @@ namespace Checkpoints
         boost::assign::map_list_of
         (0, uint256(COIN_HASH_GEN_BLOCK))
         (5, uint256("0x69dce8efe1b3c08206924eb442dce19dab57fc45922a2e7e3cf0d5bf6aa6afd7"))
-        (1000, uint256("0xd5e7ca01c93cdaff091c0bf3e8763637e107098707f95d821c389b8f913d6a19"))
-       ;
+        (784, uint256("0x44b3d17e9ca616e1519139a414d132acfcedd30aa7f77c4f78cc5b2c9b18db1a"))
+        (1728, uint256("0xf14259ff0f2f7ef6c4abbc730e26b46df91bf684a2c51b92293731b7b64cbd66"))  //invitational mining
+        (22900, uint256("0xe17782f3ddb99a1233cf6eef8b3be9b54f850641399d5e9406fd3fb6381e7dbb"))
+        ;
 
     static MapCheckpoints mapCheckpointsTestnet =
         boost::assign::map_list_of

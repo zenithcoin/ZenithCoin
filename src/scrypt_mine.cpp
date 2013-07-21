@@ -58,13 +58,6 @@ void scrypt_buffer_free(void *scratchpad)
 }
 
 
-//void scrypt_hash( const unsigned char* input, const unsigned char*t *res, int blockHeight)
-//{
-//	 return scrypt((const unsigned char*)input, inputlen,
-//	                  (const unsigned char*)input, inputlen,
-//	                  Nfactor, 0, 0, (unsigned char*)res, 32);
-//}
-
 
 void scrypt_hash(const void* input, size_t inputlen, uint32_t *res, unsigned char Nfactor)
 {

@@ -13,7 +13,7 @@
 // https://en.bitcoin.it/wiki/Base58Check_encoding
 #define COIN_ADDRESS_START  0
 
-#define COIN_NOUNCE 90714
+#define COIN_NOUNCE 190714
 #define COIN_HASH_GEN_BLOCK "0xd7dccfec6796cfb115ca9825b183a97c79ea63bfb6319d8bd958952ec44fe5ba"
 #define COIN_MERKEL_ROOT  "0x8a358c1545426fdbc20e63498ecc1facad218377bb91a0b1c8965c059ac24c10"
 
