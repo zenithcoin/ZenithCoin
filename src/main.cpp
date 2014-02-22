@@ -978,6 +978,7 @@ mpq static GetInitialDistributionAmount(int nHeight)
         if ( nHeight < EQ_HEIGHT )
         	{
         		nSubsidy = TITHE_AMOUNT; // + (EQ_HEIGHT-nHeight) * zInitialSubsidy / EQ_HEIGHT;
+
         	}
     }
     else {
@@ -986,6 +987,9 @@ mpq static GetInitialDistributionAmount(int nHeight)
         	// Subsidy is cut in half every 840000 blocks, which will occur approximately every 4 years
         	//nSubsidy >>= (nHeight / COIN_SUBSIDY_HALFLIFE);
         	     nSubsidy = TITHE_AMOUNT;  //+ (EQ_HEIGHT-nHeight) * INITIAL_SUBSIDY / EQ_HEIGHT;
+        	     if( nHeight >= 130000 )
+        	     		return TITHE_AMOUNT * 0; // no more tithing!
+
         	}
 
     }
@@ -1348,6 +1352,10 @@ mpq static GetPerpetualSubsidyAmount(int nHeight)
 
 	if( nHeight < 1728 )
 		return MINER_SUBSIDY * 7;
+
+	if( nHeight >= 130000 )
+		return MINER_SUBSIDY * 2; //24 coins
+
     return MINER_SUBSIDY;
 	//return i64_to_mpq(nSubsidy);
 }

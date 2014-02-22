@@ -30,6 +30,9 @@ namespace Checkpoints
         (1728, uint256("0xf14259ff0f2f7ef6c4abbc730e26b46df91bf684a2c51b92293731b7b64cbd66"))  //invitational mining
         (22900, uint256("0xe17782f3ddb99a1233cf6eef8b3be9b54f850641399d5e9406fd3fb6381e7dbb"))
         (36486, uint256("0xf4df2ea6d86cb1d473d63b1cad73878a7c7c29c46196a314791490f61c4c4231")) //1 million
+        (54730, uint256("0x06545aeb4da12a2b3e5d4518a49569c978c8ed9ae8ae3bef7057862984d53601")) //1.5 million
+        (72972, uint256("0x9276396dc28ad8f12f6ecf7452c1ed26593483da1e2c09474f96754d84bff7d3")) //2 million
+        (91215, uint256("0x72a906a82c67949621c2b9d9f66ba13a23c35a58ef0027b44367b6e2a1a4d350")) //2.5
         ;
 
     static MapCheckpoints mapCheckpointsTestnet =
