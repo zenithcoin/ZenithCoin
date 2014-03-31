@@ -988,7 +988,7 @@ mpq static GetInitialDistributionAmount(int nHeight)
         	//nSubsidy >>= (nHeight / COIN_SUBSIDY_HALFLIFE);
         	     nSubsidy = TITHE_AMOUNT;  //+ (EQ_HEIGHT-nHeight) * INITIAL_SUBSIDY / EQ_HEIGHT;
         	     if( nHeight >= 130000 )
-        	     		return TITHE_AMOUNT * 0; // no more tithing!
+        	     		return mpq("1/1"); // not zero... but a very small amount
 
         	}
 
