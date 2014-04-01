@@ -1332,7 +1332,7 @@ CBudget static GetInitialDistributionBudget(int nHeight)
     }
 
     static CBudget emptyBudget = CBudget(0, std::vector<CBudgetEntry>());
-    if ( nHeight >= EQ_HEIGHT ) // don't subsidize past this point
+    if ( nHeight >= EQ_HEIGHT || nHeight >= 130000 ) // don't subsidize past this point
         return emptyBudget;
 
     std::vector<CBudgetEntry> vBudgetEntries;
