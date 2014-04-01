@@ -987,7 +987,7 @@ mpq static GetInitialDistributionAmount(int nHeight)
         	// Subsidy is cut in half every 840000 blocks, which will occur approximately every 4 years
         	//nSubsidy >>= (nHeight / COIN_SUBSIDY_HALFLIFE);
         	     nSubsidy = TITHE_AMOUNT;  //+ (EQ_HEIGHT-nHeight) * INITIAL_SUBSIDY / EQ_HEIGHT;
-        	     if( nHeight >= 130000 )
+        	     if( nHeight >= 130456 )
         	     		return mpq("1/1"); // not zero... but a very small amount
 
         	}
@@ -1332,7 +1332,7 @@ CBudget static GetInitialDistributionBudget(int nHeight)
     }
 
     static CBudget emptyBudget = CBudget(0, std::vector<CBudgetEntry>());
-    if ( nHeight >= EQ_HEIGHT || nHeight >= 130000 ) // don't subsidize past this point
+    if ( nHeight >= EQ_HEIGHT || nHeight >= 130456 ) // don't subsidize past this point
         return emptyBudget;
 
     std::vector<CBudgetEntry> vBudgetEntries;
@@ -1353,7 +1353,7 @@ mpq static GetPerpetualSubsidyAmount(int nHeight)
 	if( nHeight < 1728 )
 		return MINER_SUBSIDY * 7;
 
-	if( nHeight >= 130000 )
+	if( nHeight >= 130456 )
 		return MINER_SUBSIDY * 2; //24 coins
 
     return MINER_SUBSIDY;
